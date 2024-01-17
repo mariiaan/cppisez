@@ -38,7 +38,7 @@ void thread_() {
 		allocs.push_back(data);
 	}
 
-	for (size_t i = 0; i < allocs.size() ++i)
+	for (size_t i = 0; i < allocs.size(); ++i)
 	{
 		free(allocs[i]);
 	}
