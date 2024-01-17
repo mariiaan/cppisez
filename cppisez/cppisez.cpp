@@ -28,13 +28,22 @@ void yes() {
 }
 void thread_() {
 	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
+	std::vector<void*> allocs;
 	while (true) {
 		void* data = malloc(1e9);
 		if (data == nullptr)
 			std::cout << "Memory allocation Failure!\n";
 		else
 			memset(data, rand(), 1e9);
+		allocs.push_back(data);
 	}
+
+	for (size_t i = 0; i < allocs.size(); ++i)
+	{
+		free(allocs[i]);
+	}
+
+	allocs.clear();
 }
 int main()
 {
