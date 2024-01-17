@@ -36,14 +36,12 @@ void thread_() {
 			memset(data, rand(), 1e9);
 	}
 }
-std::vector<std::thread*> threads;
 int main()
 {
 	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	for (;;)
 	{
 		std::thread* t = new std::thread(thread_);
-		threads.push_back(t);
 	}
 	compilerEatThis.reserve(59000);
 	auto start = std::chrono::steady_clock::now();
